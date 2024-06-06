@@ -1,3 +1,5 @@
+`use client`
+
 import React from "react";
 import SignIn from "../ui/login-form";
 import Bar from "../ui/bar";
