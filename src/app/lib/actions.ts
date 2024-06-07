@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 import {z} from 'zod';
 import {sql} from '@vercel/postgres';
