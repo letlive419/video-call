@@ -16,6 +16,7 @@
 import {useFormState, useFormStatus} from 'react-dom';
 import {authenticate} from '../lib/actions';
 
+
 export default function SignIn() {
   const [errorMessage,dispatch] = useFormState(authenticate, undefined)
     return (
@@ -34,7 +35,7 @@ export default function SignIn() {
           </div>
   
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action={dispatch} method="POST">
+            <form className="space-y-6" action={dispatch} >
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-white-900">
                   Email address
@@ -73,14 +74,9 @@ export default function SignIn() {
                   />
                 </div>
               </div>
-  
+              <LoginButton />
               <div>
-                <button
-                  type="submit"
-                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Sign in
-                </button>
+                
               </div>
             </form>
   
@@ -96,3 +92,15 @@ export default function SignIn() {
     )
   }
   
+  function LoginButton() {
+    const { pending } = useFormStatus();
+   
+    return (
+      <button
+                  type="submit"
+                  className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                >
+                  Sign in
+      </button>
+    );
+  }

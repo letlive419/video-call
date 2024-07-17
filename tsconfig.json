@@ -1,5 +1,9 @@
 {
   "compilerOptions": {
+    "downlevelIteration": true,
+    "paths": {
+      "@/*": ["./*"],
+    },
     "lib": [
       "dom",
       "dom.iterable",

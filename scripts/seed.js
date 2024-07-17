@@ -1,5 +1,5 @@
 const { db } = require (`@vercel/postgres`);
-const { consumers, users } = require(`../src/app/lib/placeholder-data`)
+const { customers, users } = require("../src/app/lib/placeholder-data")
 const bcrypt = require(`bcrypt`)
 
 async function seedUsers(client) {
@@ -14,7 +14,7 @@ async function seedUsers(client) {
     
      // Insert data into the "users" table
      const insertedUsers = await Promise.all(
-        users.map(async (user) => {
+        users?.map(async (user) => {
           const hashedPassword = await bcrypt.hash(user.password, 10);
           return client.sql`
           INSERT INTO users (id, name, email, password)
@@ -53,7 +53,7 @@ async function seedCustomers(client) {
   
       // Insert data into the "customers" table
       const insertedCustomers = await Promise.all(
-        customers.map(
+        customers?.map(
           (customer) => client.sql`
           INSERT INTO customers (id, name, email, image_url)
           VALUES (${customer.id}, ${customer.name}, ${customer.email}, ${customer.image_url})
@@ -73,3 +73,20 @@ async function seedCustomers(client) {
       throw error;
     }
   }
+
+  async function main() {
+    const client = await db.connect();
+  
+    await seedUsers(client);
+    await seedCustomers(client);
+   
+  
+    await client.end();
+  }
+  
+  main().catch((err) => {
+    console.error(
+      'An error occurred while attempting to seed the database:',
+      err,
+    );
+  });

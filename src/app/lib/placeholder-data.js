@@ -1,5 +1,5 @@
 
-const users = [
+ const users = [
     {
       id: '410544b2-4001-4271-9855-fec4b6a6442a',
       name: 'User',
@@ -8,7 +8,7 @@ const users = [
     },
   ];
   
-  const customers = [
+ const customers = [
     {
       id: '3958dc9e-712f-4377-85e9-fec4b6a6442a',
       name: 'Delba de Oliveira',
@@ -70,4 +70,10 @@ const users = [
       image_url: '/customers/balazs-orban.png',
     },
   ];
+
+  module.exports = {
+    users,
+    customers,
+    
+  };
   
