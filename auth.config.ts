@@ -1,4 +1,4 @@
-import  { NextAuthConfig } from "next-auth";
+import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
     pages: {
@@ -15,7 +15,7 @@ export const authConfig = {
                 return Response.redirect(new URL("/dashboard", nextUrl))
             }
             return true;
-            }
+            },
         },
         providers: [],
     } satisfies NextAuthConfig;
