@@ -1,27 +1,20 @@
 "use client"
-/*
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
-*/
+
 import {useFormState, useFormStatus} from 'react-dom';
-import {authenticate} from '../lib/actions';
+import { useActionState} from 'react';
+import { authenticate } from '../lib/actions';
+import { ExclamationCircleIcon } from '@heroicons/react/24/outline';
+
 
 
 export default function SignIn() {
-  const [errorMessage,dispatch] = useFormState(authenticate, undefined)
+  const [errorMessage, formAction, isPending] = useFormState(
+    authenticate, 
+    undefined,
+  )
     return (
       <>
-    
+        
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
           <div className="sm:mx-auto sm:w-full sm:max-w-sm">
             <img
@@ -33,9 +26,9 @@ export default function SignIn() {
               Sign in to your account
             </h2>
           </div>
-  
+         
           <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form className="space-y-6" action={dispatch} >
+          <form action={formAction} className='space-y-3'>
               <div>
                 <label htmlFor="email" className="block text-sm font-medium leading-6 text-white-900">
                   Email address
@@ -76,7 +69,12 @@ export default function SignIn() {
               </div>
               <LoginButton />
               <div>
-                
+                {errorMessage && (
+                  <>
+                     <ExclamationCircleIcon className="h-5 w-5 text-red-500" />
+                     <p className="text-sm text-red-500">{errorMessage}</p>
+                  </>
+                )}
               </div>
             </form>
   

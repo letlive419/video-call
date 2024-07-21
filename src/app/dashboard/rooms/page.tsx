@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useEffect, useRef, useMemo, useState } from "react";
-import Bar from "../ui/bar";
+import Bar from "../../ui/bar";
 
 import {
   MeetingProvider, 

@@ -1,6 +1,5 @@
 "use client"
 
-import { Fragment } from 'react'
 import {
   Disclosure,
   DisclosureButton,
@@ -16,7 +15,7 @@ import React from 'react'
 
 const navigation = [
   { name: 'Home', href: '/', current: false},
-  { name: 'Rooms', href: 'rooms', current: false },
+  { name: 'Rooms', href: '/dashboard/rooms', current: false },
   { name: 'People', href: 'dashboard', current: false },
   { name: 'Upgrade', href: '#', current: false },
   

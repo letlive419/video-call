@@ -6,12 +6,6 @@ import { string } from "zod";
 
 export default function DashBoard() {
 
- 
-
-  
-
-  
-    
     return(
         <main>
             <div>
